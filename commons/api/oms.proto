@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option go_package = "github.com/Abhishekkumar/commons/api";
+
+package api;
+
+service OrderService{
+    rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+    // rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
+    // rpc UpdateOrder(UpdateOrderRequest) returns (UpdateOrderResponse);
+    // rpc DeleteOrder(DeleteOrderRequest) returns (DeleteOrderResponse);
+}
+
+message ItemsWithQuantity{
+    string ItemID = 1;
+    int32 Quantity = 2;
+}
+
+message CreateOrderRequest{
+    string CustomerID = 1;
+    repeated ItemsWithQuantity Items = 2;
+}
+
+message Item {
+    string ItemID = 1;
+    string ItemName = 2;
+    int32 Quantity = 3;
+    string PriceID = 4;
+}
+
+message CreateOrderResponse{
+    string OrderID = 1;
+    string CustomerID = 2;
+    repeated Item Items = 3;
+}
